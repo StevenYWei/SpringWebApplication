@@ -1,27 +1,30 @@
 
 function showDeptDetail(deptId){
-	var empList = "";
 	
 	$(document).ready(function() {
 		console.log('Console log info');
 		$.ajax({
-			type: "POST",
+			type: "GET",
 			dataType: 'json',
 			url: "getDeptDetail",
 			data:{"deptId":deptId},
 			success:function(data) {
+				// Browser logging for testing.
 				console.log("Suceess!");
 				console.log(data);
 				console.log(data.deptId);
 				console.log(data.deptName);
 				console.log(data.deptEmail);
 				console.log(data.employeeList);
+				
 				var allEmpLine = "";
 				
-				$.each(data.employeeList, function(key,emp) {
+				$.each(data.employeeList, function(ListKey,emp) {
 					var empLine = "";
-					$.each(emp, function(no, value) {
-						empLine = empLine + "<td>" + value + "</td>";
+					$.each(emp, function(empKey, value) {
+						if(empKey != "@empId" && empKey != "department") {
+							empLine = empLine + "<td>" + value + "</td>";
+						}
 					});
 					allEmpLine = allEmpLine + "<tr>" + empLine + "</tr>";
 				});
@@ -31,9 +34,7 @@ function showDeptDetail(deptId){
 					$("#hiddenRowId_" + deptId).show(1000);
 				} else {
 					$("#hiddenRowId_" + deptId).hide(1500);
-				}
-
-				
+				}		
 			},
 			error:function() {
 				alert("Not working")
@@ -42,9 +43,3 @@ function showDeptDetail(deptId){
 
 	});
 }
-
-$(".clickable").click(function() {
-
-    $(this).next().hide();
-
-});

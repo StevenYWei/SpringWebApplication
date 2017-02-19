@@ -40,11 +40,11 @@ public class MvcConfig extends WebMvcConfigurerAdapter{
     }
 
 	// set the default loading page to login.jsp
-	@Override
-	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/").setViewName("login");;
-	}	
-	
+//	@Override
+//	public void addViewControllers(ViewControllerRegistry registry) {
+//		registry.addViewController("/").setViewName("login");;
+//	}	
+//	
 //	@Bean(name = "multipartResolver")
 //    public CommonsMultipartResolver getMultipartResolver() {
 //        return new CommonsMultipartResolver();

@@ -12,10 +12,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name="employee")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@empId")
 public class Employee implements Serializable {
 
 	private static final long serialVersionUID = -5455391522951121788L;
@@ -82,7 +86,7 @@ public class Employee implements Serializable {
 	
 	@ManyToOne(cascade=CascadeType.MERGE)
 	@JoinColumn(name="dept_id")
-	@JsonBackReference
+//	@JsonBackReference
 	public Department getDepartment() {
 		return department;
 	}

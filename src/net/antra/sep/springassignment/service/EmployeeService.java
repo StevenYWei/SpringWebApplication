@@ -8,7 +8,7 @@ public interface EmployeeService {
 
 	public Employee getEmplyee(Integer empNo);
 	
-	public void saveEmployee(String firstname, String lastname, Integer age, Integer deptNo);
+	public void saveEmployee(Employee newEmp, Integer deptNo);
 
 	public List<Employee> getEmpList();
 

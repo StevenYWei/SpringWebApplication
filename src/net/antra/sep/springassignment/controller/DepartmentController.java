@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
+import net.antra.sep.springassignment.entity.Department;
 import net.antra.sep.springassignment.service.DepartmentService;
 import net.antra.sep.springassignment.service.EmployeeService;
 
@@ -20,13 +20,13 @@ public class DepartmentController {
 	EmployeeService empService;
 	
 	@RequestMapping(value="/addDept")
-	public String addDepartment(@RequestParam String deptName, @RequestParam String deptEmail) {
-		deptService.saveDepartment(deptName, deptEmail);
+	public String addDepartment(Department newDept) {
+		deptService.saveDepartment(newDept);
 		return "forward:/reloadDeptEmpListAtDepartment";
 	}
 	
 	@RequestMapping(value="/departmentPage")
-	public String goToDepartmentPage(ModelMap model) {
+	public String goToDepartmentPage() {
 		return "forward:/reloadDeptEmpListAtDepartment";
 	}
 	

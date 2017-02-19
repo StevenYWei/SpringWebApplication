@@ -8,20 +8,21 @@
 <div align="center">
 	<!-- A form to add the department -->
 	<strong>Please input new department information:</strong>
-	<form action="addDept" method="post">
+	<form action="addDept" method="POST">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		<table>
 			<tr>
 				<td>Department Name:</td>
-				<td><input type="text" name="deptName" value="HR" /></td>
+				<td><input type="text" name="deptName" value="HR" required="required"/></td>
 			</tr>
 			<tr>
 				<td>Department Email:</td>
 				<td><input type="text" name="deptEmail" value="*@antra.net" /></td>
 			</tr>
-			<tr><td>Please select employee to add:</td></tr>
-			<tr><td><input type="hidden" name="deptList" value="${deptList}" /></td></tr>
-			<tr><td><input type="hidden" name="empList" value="${empList}" /></td></tr>
-			<tr><td><input type="submit" name="action" value="Add Department" /></td></tr>
+			<tr>
+				<td><input type="submit" name="action" value="Add Department" /></td>
+				<td><input type="reset" name="action" value="Reset" /></td>
+			</tr>
 		</table>
 	</form>
 </div>

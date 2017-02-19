@@ -13,10 +13,14 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "department")
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="@deptId")
 public class Department implements Serializable {
 
 	private static final long serialVersionUID = -5350810416792198549L;
@@ -72,7 +76,7 @@ public class Department implements Serializable {
 	}
 
 	@OneToMany(mappedBy="department", fetch=FetchType.EAGER)
-	@JsonManagedReference
+//	@JsonManagedReference
 	public List<Employee> getEmployeeList() {
 		return employeeList;
 	}

@@ -2,9 +2,9 @@
 <%@ page import="java.util.*" %>
 
 <head>
+	<link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
+	<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
 	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
-	<script type="text/javascript" src="resources/js/main.js"></script>
-	<link href="resources/css/main.css" rel="stylesheet">
 </head>
 
 
@@ -28,7 +28,6 @@
 		<strong>Existing Department</strong>
 	</h3>
 </div>
-
 
 
 <div align="center">

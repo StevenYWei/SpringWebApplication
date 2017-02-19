@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import net.antra.sep.springassignment.DAO.DepartmentDAO;
 import net.antra.sep.springassignment.DAO.EmployeeDAO;
-import net.antra.sep.springassignment.entity.Department;
 import net.antra.sep.springassignment.entity.Employee;
 
 @Service
@@ -26,18 +25,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 	
 	@Override
-	public void saveEmployee(String firstname, String lastname, Integer age, Integer deptNo) {
-		Department dept = deptDAO.findOne(deptNo);
-		Employee newEmployee = new Employee();
-		newEmployee.setEmpFirstName(firstname);
-		newEmployee.setEmpLastName(lastname);
-		
-		newEmployee.setEmpAge(age);
-		
-		newEmployee.setDepartment(dept);
-//		newEmployee.setDepartment(deptDAO.findOne(Integer.parseInt(deptNo)));
-		empDAO.save(newEmployee);
+	public void saveEmployee(Employee newEmp, Integer deptNo) {
+		newEmp.setDepartment(deptDAO.findOne(deptNo));
+		empDAO.save(newEmp);
 	}
+	
 
 	@Override
 	public List<Employee> getEmpList() {

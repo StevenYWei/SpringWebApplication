@@ -7,6 +7,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import net.antra.sep.springassignment.entity.Employee;
 import net.antra.sep.springassignment.service.DepartmentService;
 import net.antra.sep.springassignment.service.EmployeeService;
 
@@ -24,11 +25,17 @@ public class EmployeeController {
 		return "forward:/reloadDeptEmpListAtEmployee";
 	}
 	
+//	@RequestMapping(value="/addEmp")
+//	public String addEmployee(
+//			@RequestParam String empFirstName, @RequestParam String empLastName, 
+//			@RequestParam Integer empAge,  @RequestParam Integer deptSelection) {
+//		empService.saveEmployee(empFirstName, empLastName, empAge, deptSelection);
+//		return "forward:/reloadDeptEmpListAtEmployee";
+//	}
+	
 	@RequestMapping(value="/addEmp")
-	public String addEmployee(
-			@RequestParam String empFirstName, @RequestParam String empLastName, 
-			@RequestParam Integer empAge,  @RequestParam Integer deptSelection) {
-		empService.saveEmployee(empFirstName, empLastName, empAge, deptSelection);
+	public String addEmployee(Employee newEmp,  @RequestParam Integer deptSelection) {
+		empService.saveEmployee(newEmp, deptSelection);
 		return "forward:/reloadDeptEmpListAtEmployee";
 	}
 	

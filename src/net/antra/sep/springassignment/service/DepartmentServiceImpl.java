@@ -19,10 +19,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 	
 	@Override
 	@Transactional
-	public void saveDepartment(String deptName, String deptEmail) {
-		Department newDept = new Department();
-		newDept.setDeptName(deptName);
-		newDept.setDeptEmail(deptEmail);
+	public void saveDepartment(Department newDept) {
 		deptDAO.save(newDept);
 	}
 
@@ -36,12 +33,6 @@ public class DepartmentServiceImpl implements DepartmentService {
 	@Transactional
 	public List<Department> getDeptList() {
 		return deptDAO.getDeptList();
-	}
-
-	@Override
-	@Transactional
-	public List<Department> getDeptListWithEmployee() {
-		return null;
 	}
 
 }

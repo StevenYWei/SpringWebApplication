@@ -10,6 +10,7 @@
 	<!-- A form to add the department -->
 	Please input employee information:
 	<form action="addEmp" method="post">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 		<table>
 			<tr>
 				<td>First Name:</td>
@@ -33,8 +34,6 @@
 					</select>
 				</td>
 			</tr>
-			<tr><td><input type="hidden" name="empList" value="${empList}" /></td></tr>
-			<tr><td><input type="hidden" name="deptList" value="${deptList}" /></td></tr>
 			<tr><td>
 				<c:if test="${empty deptList}">
 					<input type="submit" name="action" value="Add Employee" disabled/>
