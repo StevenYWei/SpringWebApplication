@@ -1,6 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="java.util.*" %>
-<%@ page import="net.antra.sep.springassignment.entity.*" %>
+<%@include file="/WEB-INF/views/includes/header.jsp"%>
 
 <h1 align="center">This is department page!</h1>
 <div align="center">Current User: <strong>${userName}</strong><br></div>
@@ -37,16 +35,33 @@
 			<th>Department Name</th>
 			<th>Department Email</th>
 			<th>Department Employee</th>
+			<th colspan="2">Action</th>
 		</tr>
 		<c:forEach var="dept" items="${deptList}">
-			<tr>
+			<tr id="deptRowId_${dept.getDeptId()}">
 				<td>${dept.getDeptId()}</td>
-				<td>${dept.getDeptName()}</td>
-				<td>${dept.getDeptEmail()}</td>
-				<td><c:forEach var="emp" items="${dept.getEmployeeList()}">
-				${emp.getEmpFirstName()}${emp.getEmpLastName()};
-			</c:forEach></td>
+				<td id="deptNameId_${dept.getDeptId()}">${dept.getDeptName()}</td>
+				<td id="deptEmailId_${dept.getDeptId()}">${dept.getDeptEmail()}</td>
+				<td>
+					<c:forEach var="emp" items="${dept.getEmployeeList()}">
+						${emp.getEmpFirstName()}${emp.getEmpLastName()};
+					</c:forEach>
+				</td>
+				<td><c:if test="${empty dept.getEmployeeList()}">
+						<button id="deptDeleteBtnId_${dept.getDeptId()}" type="button" onclick="deleteDept(${dept.getDeptId()})">Delete</button>
+					</c:if>
+					<c:if test="${!empty dept.getEmployeeList()}">
+						<button id="deptDeleteBtnId_${dept.getDeptId()}" type="button" onclick="deleteDept(${dept.getDeptId()})" disabled="disabled">Delete</button>
+					</c:if>
+				</td>
+				<td id="deptUpdateCellId_${dept.getDeptId()}">
+					<button type="button" onclick="updateDeptInfo(${dept.getDeptId()})">Update</button>
+				</td>
 			</tr>
 		</c:forEach>
 	</table>
 </div>
+
+<%@include file="/WEB-INF/views/includes/footer.jsp"%>
+
+

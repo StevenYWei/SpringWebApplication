@@ -1,7 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="net.antra.sep.springassignment.entity.*" %>
-<%@ page import="java.util.*" %>
-<%@ page errorPage="errorpage.jsp" %>
+<%@include file="/WEB-INF/views/includes/header.jsp"%>
 
 <h1 align="center">This is employee page!</h1>
 <div align="center">Current User: <strong>${userName}</strong></div>
@@ -59,15 +56,25 @@
 			<th>Employee LastName</th>
 			<th>Department</th>
 			<th>Employee Age</th>
+			<th>Action</th>
 		</tr>
 		<c:forEach var="emp" items="${empList}">
-			<tr>
+			<tr id="empRowId_${emp.getEmpId()}">
 				<td>${emp.getEmpId()}</td>
 				<td>${emp.getEmpFirstName()}</td>
 				<td>${emp.getEmpLastName()}</td>
 				<td>${emp.getDepartment().getDeptName()}</td>
 				<td>${emp.getEmpAge()}</td>
+				<td>
+					<button id="empBtnId_${emp.getEmpId()}" type="button" onclick="deleteEmp(${emp.getEmpId()})">Delete</button>
+				</td>
 			</tr>
 		</c:forEach>
 	</table>
 </div>
+
+
+<%@include file="/WEB-INF/views/includes/footer.jsp"%>
+
+
+

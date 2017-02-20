@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-login fail!
+<strong>You are not authorized to visit this page!</strong><br>
 <a href="login">Back to Login</a>
 </body>
 </html>

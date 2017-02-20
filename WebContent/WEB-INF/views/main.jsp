@@ -1,14 +1,6 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="java.util.*" %>
+<%@include file="/WEB-INF/views/includes/header.jsp"%>
 
-<head>
-	<link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
-	<script src="${pageContext.request.contextPath}/resources/js/main.js"></script>
-	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
-</head>
-
-
-<h1 align="center">Welcome ${userName} !</h1>
+<h1 align="center">Welcome ${principal.username} !</h1>
 
 <div align="center">
 	<h3>This is the main page!</h3>
@@ -54,7 +46,7 @@
 	</table>
 </div>
 
-
+<%@include file="/WEB-INF/views/includes/footer.jsp"%>
 
 
 

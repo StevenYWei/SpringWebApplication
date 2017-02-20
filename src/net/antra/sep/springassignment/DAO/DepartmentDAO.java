@@ -14,4 +14,5 @@ public interface DepartmentDAO extends JpaRepository<Department, Integer>{
 	@Query("select d from Department d")
 	public List<Department> getDeptList();
 	
+	
 }
