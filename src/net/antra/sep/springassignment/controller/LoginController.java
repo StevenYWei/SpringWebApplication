@@ -32,7 +32,7 @@ public class LoginController {
 		return "login";
 	}
 
-	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	@RequestMapping(value = "/logout")
 	public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("In the logout processing");
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();

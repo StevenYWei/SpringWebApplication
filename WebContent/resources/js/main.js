@@ -136,3 +136,108 @@ function confirmDeptChange(deptId) {
 		}
 	});
 }
+
+function updateEmpInfo(empId) {
+	console.log("Show editable employee information with ID " + empId);
+	
+	$.ajax({
+		type: "GET",
+		dataType: 'json',
+		url: "getEmpDetail",
+		data:{"empId":empId},
+		success:function(empData) {
+			console.log(empData);
+			$("#empFirstNameId_" + empId).html("<input id='empFirstNameInputId_" + empId + "' type='text'  autofocus='autofocus' value='"+ empData.empFirstName +"'>");
+			$("#empLastNameId_" + empId).html("<input id='empLastNameInputId_" + empId + "' type='text' value='"+ empData.empLastName +"'>");
+			$("#empAgeId_" + empId).html("<input id='empAgeInputId_" + empId + "' type='number'  value='"+ empData.empAge +"'>");
+			
+			var deptSelection = "<select id='empDeptSelectionID_"+ empId +"'>";
+			
+			$.ajax({
+				type: "GET",
+				dataType: 'json',
+				url: "getDeptList",
+				success:function(deptListData) {
+					console.log(deptListData);
+					$.each(deptListData, function(no,deptObj) {
+						//console.log(deptObj.deptName);
+						 
+						// check which department is the previously assigned to the employee
+						if(empData.department.deptId == deptObj.deptId) {
+							// default select the old department
+							deptSelection = deptSelection + "<option selected='selected' value='";
+						} else {
+							deptSelection = deptSelection + "<option value='";
+						}
+						// add the full opotion
+						deptSelection = deptSelection + deptObj.deptId + "'>" + deptObj.deptName + "</option>";
+						
+					});
+					// end the select
+					deptSelection = deptSelection + "</select>";
+					// assign the select list to the employee department area
+					$("#empDeptId_" + empId).html(deptSelection);
+				},
+				error:function() {
+					alert("getDeptList error...");
+				}
+			});
+			
+			$("#empUpdateCellId_" + empId).html(
+					"<button type='button' onclick='confirmEmpChange(" + empId + ")'>Comfirm Change</button>");
+		},
+		error:function() {
+			alert("Error in deleting...");
+		}
+	});
+}
+
+function confirmEmpChange(empId) {
+	console.log("Try to update employee with ID " + empId);
+	
+	var empFirstName = $("#empFirstNameInputId_" + empId).val();
+	var empLastName = $("#empLastNameInputId_" + empId).val();
+	var empAge = $("#empAgeInputId_" + empId).val();
+	var empDeptSelection = $("#empDeptSelectionID_" + empId ).val();
+	console.log("empFirstName:" + empFirstName);
+	console.log("empLastName: " + empLastName);
+	console.log("empAge: " + empAge);
+	console.log("empDeptSelection: " + empDeptSelection);
+	
+	$.ajax({
+		type: "GET",
+		dataType: 'json',
+		url: "updateEmp",
+		data:{
+			"empId":empId,
+			"empFirstName": empFirstName,
+			"empLastName": empLastName,
+			"empAge": empAge,
+			"deptNo": empDeptSelection
+		},
+		success:function(empData) {
+			// get the current data from each field
+			$("#empFirstNameId_" + empId).html(empFirstName);
+			$("#empLastNameId_" + empId).html(empLastName);
+			$("#empAgeId_" + empId).html(empAge);
+			$("#empUpdateCellId_" + empId).html("<button type='button' onclick='updateEmpInfo(" + empId + ")'>Update</button>");
+			
+			$.ajax({
+				type: "GET",
+				dataType: 'json',
+				url: "getDeptDetail",
+				data:{"deptId":empDeptSelection},
+				success:function(deptData){
+					console.log("Department data: ");
+					console.log(deptData);
+					$("#empDeptId_" + empId).html(deptData.deptName);
+				}
+			});
+				
+		},
+		error:function() {
+			alert("Error in deleting...");
+		}
+	});
+}
+

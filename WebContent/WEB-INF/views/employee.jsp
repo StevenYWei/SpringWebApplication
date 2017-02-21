@@ -49,30 +49,32 @@
 
 <!-- Display the department and employee information -->
 <div align="center">
-	<table border="1">
+	<table border="1" class="deptTable">
 		<tr>
 			<th>EmployeeID</th>
 			<th>Employee FirstName</th>
 			<th>Employee LastName</th>
 			<th>Department</th>
 			<th>Employee Age</th>
-			<th>Action</th>
+			<th colspan="2">Action</th>
 		</tr>
 		<c:forEach var="emp" items="${empList}">
 			<tr id="empRowId_${emp.getEmpId()}">
 				<td>${emp.getEmpId()}</td>
-				<td>${emp.getEmpFirstName()}</td>
-				<td>${emp.getEmpLastName()}</td>
-				<td>${emp.getDepartment().getDeptName()}</td>
-				<td>${emp.getEmpAge()}</td>
+				<td id="empFirstNameId_${emp.getEmpId()}">${emp.getEmpFirstName()}</td>
+				<td id="empLastNameId_${emp.getEmpId()}">${emp.getEmpLastName()}</td>
+				<td id="empDeptId_${emp.getEmpId()}">${emp.getDepartment().getDeptName()}</td>
+				<td id="empAgeId_${emp.getEmpId()}">${emp.getEmpAge()}</td>
 				<td>
-					<button id="empBtnId_${emp.getEmpId()}" type="button" onclick="deleteEmp(${emp.getEmpId()})">Delete</button>
+					<button id="empDeleteBtnId_${emp.getEmpId()}" type="button" onclick="deleteEmp(${emp.getEmpId()})">Delete</button>
+				</td>
+				<td id="empUpdateCellId_${emp.getEmpId()}">
+					<button type="button" onclick="updateEmpInfo(${emp.getEmpId()})">Update</button>
 				</td>
 			</tr>
 		</c:forEach>
 	</table>
 </div>
-
 
 <%@include file="/WEB-INF/views/includes/footer.jsp"%>
 

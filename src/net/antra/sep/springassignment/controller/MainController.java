@@ -32,18 +32,18 @@ public class MainController {
 		return "main";
 	}
 	
-	@RequestMapping(value = "/getDeptDetail")
-	@ResponseBody
-	public Department getDeptDetail(@RequestParam Integer deptId){
-		Department dept = deptService.getDeparment(deptId);
-//		DepartmentVo deptVo = new DepartmentVo();
-//		deptVo.setDeptId(deptId);
-//		deptVo.setDeptName(dept.getDeptName());
-//		deptVo.setDeptEmail(dept.getDeptEmail());
-//		deptVo.setEmployeeList((List<EmployeeVo>) (Object)dept.getEmployeeList());
-		
-		return dept;
-	}
-	
+//	@RequestMapping(value = "/getDeptDetail")
+//	@ResponseBody
+//	public Department getDeptDetail(@RequestParam Integer deptId){
+//		Department dept = deptService.getDeparment(deptId);
+////		DepartmentVo deptVo = new DepartmentVo();
+////		deptVo.setDeptId(deptId);
+////		deptVo.setDeptName(dept.getDeptName());
+////		deptVo.setDeptEmail(dept.getDeptEmail());
+////		deptVo.setEmployeeList((List<EmployeeVo>) (Object)dept.getEmployeeList());
+//		
+//		return dept;
+//	}
+//	
 	
 }

@@ -17,6 +17,6 @@ public interface EmployeeWebService {
 
 	Integer deleteEmpById(Integer empId);
 
-	void updateEmpById(Integer empId);
+	void updateEmp(Integer empId, String empFirstName, String empLastName, Integer empAge, Integer deptNo);
 
 }

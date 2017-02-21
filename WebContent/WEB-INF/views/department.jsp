@@ -29,7 +29,7 @@
 <!-- Display the department and employee information -->
 <div align="center"><h3><strong>Existing Department and Employee</strong></h3></div>
 <div align="center">
-	<table border="1">
+	<table border="1" class="deptTable">
 		<tr>
 			<th>Department ID</th>
 			<th>Department Name</th>

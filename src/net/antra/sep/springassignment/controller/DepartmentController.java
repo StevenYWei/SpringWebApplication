@@ -1,6 +1,8 @@
 
 package net.antra.sep.springassignment.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -58,4 +60,20 @@ public class DepartmentController {
 		deptWebService.updateDeptBy(deptId, deptName, deptEmail);
 		return "1";
 	}
+	
+	@RequestMapping(value="/getDeptList")
+	@ResponseBody
+	public List<Department> getDeptList() {
+		return deptWebService.getAllDept();
+	}
+	
+	@RequestMapping(value="/getDeptDetail")
+	@ResponseBody
+	public Department getDeptDetail(Integer deptId) {
+		return deptWebService.getDeptById(deptId);
+	}
+	
 }
+
+
+

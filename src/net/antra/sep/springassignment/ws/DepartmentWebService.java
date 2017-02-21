@@ -1,16 +1,10 @@
-/**
- * 
- */
+
 package net.antra.sep.springassignment.ws;
 
 import java.util.List;
 
 import net.antra.sep.springassignment.entity.Department;
 
-/**
- * @author yumingwei
- *
- */
 public interface DepartmentWebService {
 
 	List<Department> getDeptByPartialName(String deptName);
@@ -19,4 +13,7 @@ public interface DepartmentWebService {
 
 	void updateDeptBy(Integer deptId, String deptName, String deptEmail);
 
+	List<Department> getAllDept();
+	
+	Department getDeptById(Integer deptId);
 }

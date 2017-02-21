@@ -44,5 +44,15 @@ public class DepartmentWebServiceImpl implements DepartmentWebService{
 		dept.setDeptEmail(deptEmail);
 		deptDAO.save(dept);
 	}
+
+	@Override
+	public List<Department> getAllDept() {
+		return deptDAO.findAll();
+	}
+
+	@Override
+	public Department getDeptById(Integer deptId) {
+		return deptDAO.findOne(deptId);
+	}
 	
 }

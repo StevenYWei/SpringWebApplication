@@ -30,14 +30,6 @@ public class EmployeeController {
 		return "forward:/reloadDeptEmpListAtEmployee";
 	}
 	
-//	@RequestMapping(value="/addEmp")
-//	public String addEmployee(
-//			@RequestParam String empFirstName, @RequestParam String empLastName, 
-//			@RequestParam Integer empAge,  @RequestParam Integer deptSelection) {
-//		empService.saveEmployee(empFirstName, empLastName, empAge, deptSelection);
-//		return "forward:/reloadDeptEmpListAtEmployee";
-//	}
-	
 	@RequestMapping(value="/addEmp")
 	public String addEmployee(Employee newEmp,  @RequestParam Integer deptSelection) {
 		empService.saveEmployee(newEmp, deptSelection);
@@ -56,6 +48,21 @@ public class EmployeeController {
 	public String deleteEmployee(@RequestParam Integer empId) {
 		System.out.println("In the deleting method...");
 		return empWebService.deleteEmpById(empId).toString();
+	}
+	
+	@RequestMapping(value = "/getEmpDetail")
+	@ResponseBody
+	public Employee getEmpDetail(@RequestParam Integer empId){
+		Employee emp = empService.getEmplyee(empId);		
+		return emp;
+	}
+	@RequestMapping(value="/updateEmp")
+	@ResponseBody
+	public String updateEmployee(@RequestParam Integer empId, @RequestParam String empFirstName, 
+			@RequestParam String empLastName, @RequestParam Integer empAge, @RequestParam Integer deptNo) {
+		System.out.println("In the update employee method...");
+		empWebService.updateEmp(empId, empFirstName, empLastName, empAge, deptNo);
+		return "1";
 	}
 
 }
