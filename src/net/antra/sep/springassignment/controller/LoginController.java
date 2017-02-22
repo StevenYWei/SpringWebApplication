@@ -22,7 +22,7 @@ public class LoginController {
 	@Autowired
 	UserService userService;
 	
-	@RequestMapping(method=RequestMethod.GET)
+	@RequestMapping()
 	public String showIndex(ModelMap model) {
 		return "main";
 	}

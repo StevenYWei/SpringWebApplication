@@ -44,9 +44,9 @@ public class EmployeeWebServiceImpl implements EmployeeWebService{
 	@Override
 	@Transactional
 	public void updateEmp(Integer empId, String empFirstName, String empLastName, Integer empAge, Integer deptNo) {
-		Department dept = deptDAO.findOne(deptNo);
+//		Department dept = deptDAO.findOne(deptNo);
 		Employee emp = empDAO.findOne(empId);
-		emp.setDepartment(dept);
+		emp.setDepartment(deptDAO.findOne(deptNo));
 		emp.setEmpFirstName(empFirstName);
 		emp.setEmpLastName(empLastName);
 		emp.setEmpAge(empAge);

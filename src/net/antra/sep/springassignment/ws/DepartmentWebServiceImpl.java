@@ -18,9 +18,9 @@ public class DepartmentWebServiceImpl implements DepartmentWebService{
 	DepartmentDAO deptDAO;
 	
 	@Override
+	@Transactional
 	public List<Department> getDeptByPartialName(String deptName) {
-		
-		return null;
+		return deptDAO.getDeprtmentByPartialName(deptName);
 	}
 	
 	@Override

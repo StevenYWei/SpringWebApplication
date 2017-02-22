@@ -241,3 +241,36 @@ function confirmEmpChange(empId) {
 	});
 }
 
+function getDeptByPartialName() {
+	var deptName = $("#deptNameSearch").val();
+	$.ajax({
+		type: "GET",
+		dataType: 'json',
+		url: "getDeptByPartialName",
+		data:{"deptName":deptName},
+		success:function(data) {
+			console.log(data);
+		},
+		error: function() {
+			alert("getDeptByPartialName failed...");
+		}
+	});
+}
+
+function getGeoIP() {
+	var IP = $("#IPInput").val();
+	console.log(IP);
+	$.ajax({
+		type: 'GET',
+		url: 'getCountryName',
+		data: {"IP":IP},
+		success:function(msg) {
+			console.log(msg);
+			$("#IPInforDisplayArea").html(msg);
+		},
+		error : function() {
+			alert("Get geo ip error...");
+		}
+		
+	});
+}

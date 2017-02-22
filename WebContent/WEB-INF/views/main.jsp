@@ -4,9 +4,14 @@
 
 <div align="center">
 	<h3>This is the main page!</h3>
-	<br> Please choose from the below link:<br>
 </div>
+
+<label>This is IP Location Service, please input a valid IP</label><br>
+<input id="IPInput" type="text" onkeypress="getGeoIP()" value="50.245.234.21"><br>
+<p id="IPInforDisplayArea">Your IP information will be displayed here.</p>
+
 <div align="center">
+	<br> Please choose from the below link:<br>
 	<!-- Department Link -->
 	<a href="departmentPage">Department</a>
 	<!-- Employee Link -->

@@ -37,6 +37,13 @@
 			<th>Department Employee</th>
 			<th colspan="2">Action</th>
 		</tr>
+		<%-- <tr>
+			<td><input id="deptIdSearch" type="text"></td>
+			<td><input id="deptNameSearch" type="text" onchange="getDeptByPartialName()"></td>
+			<td><input id="deptEmailSearch" type="text"></td>
+			<td><input id="deptEmpSearch" type="text"></td>
+			<td colspan="2">Serach Line</td>
+		</tr>--%>
 		<c:forEach var="dept" items="${deptList}">
 			<tr id="deptRowId_${dept.getDeptId()}">
 				<td>${dept.getDeptId()}</td>

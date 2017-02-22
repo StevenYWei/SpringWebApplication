@@ -14,8 +14,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
@@ -76,7 +74,6 @@ public class Department implements Serializable {
 	}
 
 	@OneToMany(mappedBy="department", fetch=FetchType.EAGER)
-//	@JsonManagedReference
 	public List<Employee> getEmployeeList() {
 		return employeeList;
 	}

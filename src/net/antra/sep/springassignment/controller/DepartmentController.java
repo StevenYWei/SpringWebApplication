@@ -73,6 +73,12 @@ public class DepartmentController {
 		return deptWebService.getDeptById(deptId);
 	}
 	
+	@RequestMapping(value="/getDeptByPartialName")
+	@ResponseBody
+	public List<Department> getDeptByPartialName(String deptName) {
+		return deptWebService.getDeptByPartialName(deptName);
+	}
+	
 }
 
 
