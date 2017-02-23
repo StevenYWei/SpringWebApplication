@@ -3,14 +3,12 @@ package net.antra.sep.springassignment.ws;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import net.antra.sep.springassignment.DAO.DepartmentDAO;
 import net.antra.sep.springassignment.DAO.EmployeeDAO;
-import net.antra.sep.springassignment.entity.Department;
 import net.antra.sep.springassignment.entity.Employee;
 
 @Service
@@ -44,14 +42,12 @@ public class EmployeeWebServiceImpl implements EmployeeWebService{
 	@Override
 	@Transactional
 	public void updateEmp(Integer empId, String empFirstName, String empLastName, Integer empAge, Integer deptNo) {
-//		Department dept = deptDAO.findOne(deptNo);
 		Employee emp = empDAO.findOne(empId);
 		emp.setDepartment(deptDAO.findOne(deptNo));
 		emp.setEmpFirstName(empFirstName);
 		emp.setEmpLastName(empLastName);
 		emp.setEmpAge(empAge);
 		empDAO.save(emp);
-	}
-	
+	}	
 	
 }
