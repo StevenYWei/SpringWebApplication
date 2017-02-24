@@ -266,7 +266,7 @@ function getGeoIP() {
 		data: {"IP":IP},
 		success:function(msg) {
 			console.log(msg);
-			$("#IPInforDisplayArea").html(msg);
+			$("#IPInforDisplayArea").html('<strong>' + msg + '</strong>');
 		},
 		error : function() {
 			alert("Get geo ip error...");

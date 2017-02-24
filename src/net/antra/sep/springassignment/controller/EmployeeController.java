@@ -2,11 +2,14 @@
 package net.antra.sep.springassignment.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import net.antra.sep.springassignment.entity.Employee;
 import net.antra.sep.springassignment.service.DepartmentService;
@@ -63,6 +66,12 @@ public class EmployeeController {
 		System.out.println("In the update employee method...");
 		empWebService.updateEmp(empId, empFirstName, empLastName, empAge, deptNo);
 		return "1";
+	}
+	
+	@ExceptionHandler(Exception.class)
+	public String stopDirectAddEmp() {
+		System.out.println("In the exception handling in employee ...");
+		return "errorpage";
 	}
 
 }

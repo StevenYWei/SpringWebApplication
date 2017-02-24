@@ -4,12 +4,16 @@ package net.antra.sep.springassignment.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import net.antra.sep.springassignment.entity.Department;
 import net.antra.sep.springassignment.service.DepartmentService;
@@ -28,9 +32,10 @@ public class DepartmentController {
 	@Autowired
 	DepartmentWebService deptWebService;
 	
-	@RequestMapping(value="/addDept", method=RequestMethod.POST)
+	@RequestMapping(value="/addDept")//, method=RequestMethod.POST)
 	public String addDepartment(Department newDept) {
 		deptService.saveDepartment(newDept);
+		
 		return "forward:/reloadDeptEmpListAtDepartment";
 	}
 	
@@ -77,6 +82,18 @@ public class DepartmentController {
 	@ResponseBody
 	public List<Department> getDeptByPartialName(String deptName) {
 		return deptWebService.getDeptByPartialName(deptName);
+	}
+	
+	@ExceptionHandler(Exception.class)
+	public String stopDirectAddDept() {
+		System.out.println("In the exception handling in dept...");
+		return "errorpage";
+	}
+	
+	@ExceptionHandler(DataIntegrityViolationException.class)
+	public String stopDirectAddDept4() {
+		System.out.println("In the exception handling in dept Method internal server error...");
+		return "errorpage";
 	}
 	
 }

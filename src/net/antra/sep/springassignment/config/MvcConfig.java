@@ -6,11 +6,11 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
@@ -42,21 +42,26 @@ public class MvcConfig extends WebMvcConfigurerAdapter{
 	// set the default loading page to login.jsp
 //	@Override
 //	public void addViewControllers(ViewControllerRegistry registry) {
-//		registry.addViewController("/").setViewName("login");;
+//		registry.addViewController("/").setViewName("/getDeptEmpListAtMain");;
 //	}	
-//	
+
 //	@Bean(name = "multipartResolver")
 //    public CommonsMultipartResolver getMultipartResolver() {
 //        return new CommonsMultipartResolver();
 //    }
-// 
-//    @Bean(name = "messageSource")
-//    public ReloadableResourceBundleMessageSource getMessageSource() {
-//        ReloadableResourceBundleMessageSource resource = new ReloadableResourceBundleMessageSource();
-//        resource.setBasename("classpath:messages");
-//        resource.setDefaultEncoding("UTF-8");
-//        return resource;
-//    }
+	
+	@Bean
+    public MultipartResolver multipartResolver() {
+        return new StandardServletMultipartResolver();
+    }
+ 
+    @Bean(name = "messageSource")
+    public ReloadableResourceBundleMessageSource getMessageSource() {
+        ReloadableResourceBundleMessageSource resource = new ReloadableResourceBundleMessageSource();
+        resource.setBasename("classpath:messages");
+        resource.setDefaultEncoding("UTF-8");
+        return resource;
+    }
     
     
 }

@@ -5,13 +5,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import net.antra.sep.springassignment.service.UserService;
 
@@ -24,7 +27,7 @@ public class LoginController {
 	
 	@RequestMapping()
 	public String showIndex(ModelMap model) {
-		return "main";
+		return "forward:/getDeptEmpListAtMain";
 	}
 	
 	@RequestMapping("/login")
@@ -46,5 +49,11 @@ public class LoginController {
 	public String accessDenyPage(HttpServletRequest request, HttpServletResponse response) {
 		System.out.println("In the deny processing");
 		return "deny";
+	}
+	
+	@ExceptionHandler(Exception.class)
+	public String errHandlerinLogin() {
+		System.out.println("In the exception handling in login...");
+		return "errorpage";
 	}
 }

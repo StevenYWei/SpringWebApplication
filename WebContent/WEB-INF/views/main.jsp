@@ -5,10 +5,11 @@
 <div align="center">
 	<h3>This is the main page!</h3>
 </div>
-
-<label>This is IP Location Service, please input a valid IP</label><br>
-<input id="IPInput" type="text" onkeypress="getGeoIP()" value="50.245.234.21"><br>
-<p id="IPInforDisplayArea">Your IP information will be displayed here.</p>
+<div align="center">
+	<label>This is IP Location Service, please input a valid IP</label><br>
+	<input id="IPInput" type="text" onkeypress="getGeoIP()" value="50.245.234.21"><br>
+	<p id="IPInforDisplayArea"><strong>Your IP information will be displayed here.</strong></p>
+</div>
 
 <div align="center">
 	<br> Please choose from the below link:<br>

@@ -27,7 +27,7 @@
 			</div>
 		</c:if>
 		
-		<form action="${loginProcessingUrl}" method="post">
+		<form action="${loginUrl}" method="post">
 			Your Username:<br> <input type="text" name="username" value="a1" id="username"><br>
 			Password:<br> <input type="password" name="password" value="1" id="password"><br>
 			<input type="hidden" name="${_csrf.parameterName}"   value="${_csrf.token}" />
