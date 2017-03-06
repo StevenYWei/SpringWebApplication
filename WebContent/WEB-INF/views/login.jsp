@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-	
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
 <html xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
 <head>
@@ -16,6 +17,7 @@
 			<div>
 				<p>
 					<font color="red">Invalid username or password.</font>
+					<%-- <font color="red">${ErrorLogin}</font> --%>
 				</p>
 			</div>
 		</c:if>

@@ -25,10 +25,10 @@ public class MvcConfig extends WebMvcConfigurerAdapter{
         registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
     }
  
-  @Override
-  public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-      configurer.enable();
-  }
+	@Override
+	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+		configurer.enable();
+	}
 
 	
 	@Bean

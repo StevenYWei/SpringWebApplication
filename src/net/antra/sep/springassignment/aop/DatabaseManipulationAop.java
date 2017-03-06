@@ -14,7 +14,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class DatabaseManipulationAop {
 	
-	@After("insertStatement()")
+//	@After("insertStatement÷()")
+	@After("execution(* *.save(..))")
 	public void insertResult(JoinPoint jp) {
 		System.out.println("An (" + jp.getSignature().getName() + ") is executed on (" + jp.getTarget().getClass() + ")");
 	}

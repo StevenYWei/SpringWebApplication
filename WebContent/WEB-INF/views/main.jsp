@@ -1,4 +1,5 @@
 <%@include file="/WEB-INF/views/includes/header.jsp"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <h1 align="center">Welcome ${principal.username} !</h1>
 
@@ -9,6 +10,19 @@
 	<label>This is IP Location Service, please input a valid IP</label><br>
 	<input id="IPInput" type="text" onkeypress="getGeoIP()" value="50.245.234.21"><br>
 	<p id="IPInforDisplayArea"><strong>Your IP information will be displayed here.</strong></p>
+</div>
+<div align="center">
+	<label>This is spring validation test form</label>
+	<form:form action="springForm" method="POST" modelAttribute="VO">
+		<form:label path="">Please in put the department name:</form:label><br>
+		<form:input path="deptName" />
+		<br>
+		<small>${nameNotGood}</small>
+		<br>
+		<form:errors path="deptName"></form:errors>
+		<br>
+		<form:button>Valid</form:button>
+	</form:form>
 </div>
 
 <div align="center">

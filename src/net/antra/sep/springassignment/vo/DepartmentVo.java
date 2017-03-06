@@ -10,9 +10,9 @@ import org.hibernate.validator.constraints.Length;
 public class DepartmentVo {
 	
 	private Integer deptId;
-	@Length(min = 1, max = 30, message = "Department name should be at leas one chracter and max 30 characters.")
+	@Length(min = 1, max = 30, message = "Validation in DepartmentVo: name between 1 and 30 characters.")
 	private String deptName;
-	@Email
+	@Email(message="Not a valid email")
 	private String deptEmail;
 	private List<EmployeeVo> employeeList;
 	

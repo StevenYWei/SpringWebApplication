@@ -33,7 +33,8 @@ public class DepartmentServiceImpl implements DepartmentService {
 	@Override
 	@Transactional
 	public List<Department> getDeptList() {
-		return deptDAO.getDeptList();
+//		return deptDAO.getDeptList();
+		return deptDAO.findAll();		
 	}
 
 }
