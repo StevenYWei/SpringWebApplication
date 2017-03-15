@@ -18,6 +18,7 @@ public class TestBean {
 	public static void main(String[] args) {
 		ApplicationContext ac = new ClassPathXmlApplicationContext();
 		ac.getBean("student");   //prototype created
+		
 		// make singleton thread safe
 		// constructor-args in xml
 		// HttpSession
