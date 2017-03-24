@@ -18,14 +18,14 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@EnableJpaRepositories(basePackages = "net.antra.sep.springassignment.DAO")
+@EnableJpaRepositories(basePackages = "com.steven.hrsystem.DAO")
 @EnableTransactionManagement
 public class PersistenceJPAConfig{
    @Bean
    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
       LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
       em.setDataSource(dataSource());
-      em.setPackagesToScan(new String[] { "net.antra.sep.springassignment.entity" });
+      em.setPackagesToScan(new String[] { "com.steven.hrsystem.entity" });
  
       JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
       em.setJpaVendorAdapter(vendorAdapter);

@@ -5,7 +5,7 @@ import java.util.List;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 
-//import net.antra.sep.springassignment.entity.Employee;
+//import com.steven.hrsystem.entity.Employee;
 
 public class DepartmentVo {
 	

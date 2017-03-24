@@ -3,9 +3,9 @@ package com.steven.hrsystem.vo;
 
 import org.hibernate.validator.constraints.Length;
 
-//import net.antra.sep.springassignment.entity.Department;
+//import com.steven.hrsystem.entity.Department;
 
-//import net.antra.sep.springassignment.vo.DepartmentVo;
+//import com.steven.hrsystem.vo.DepartmentVo;
 
 public class EmployeeVo {
 	

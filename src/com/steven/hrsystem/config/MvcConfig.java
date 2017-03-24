@@ -17,7 +17,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 @EnableWebMvc
 @EnableAspectJAutoProxy
-@ComponentScan(basePackages = {"net.antra.sep.springassignment"})
+@ComponentScan(basePackages = {"com.steven.hrsystem"})
 public class MvcConfig extends WebMvcConfigurerAdapter{
 
 	@Override
