@@ -26,7 +26,7 @@ public class TestBean {
 		// bean post processor
 		// inner bean
 		// static factory method instantiation
-		// extends Calendar class in Spring
+		// use Calendar class in Spring
 		
 	}
 }

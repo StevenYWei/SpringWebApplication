@@ -36,7 +36,11 @@
 			<input value="Submit" type="submit">
 		</form>
 	</div>
-
+	
+	<div align="center">
+		<input type="text" id="NumberInput" min="1" maxlength="5" />
+	</div>
+	
 	ADMIN - username: a1, pw:1 <br>
 	ADMIN - username: a2, pw:2 <br>
 	USER - username: 1, pw: 1
